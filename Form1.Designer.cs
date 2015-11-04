@@ -1,4 +1,6 @@
-﻿namespace Hoppespill
+﻿using System.Windows.Forms;
+
+namespace Hoppespill
 {
     partial class Form1
     {
@@ -28,14 +30,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bakgrunn = new System.Windows.Forms.Panel();
             this.car = new System.Windows.Forms.Panel();
+            this.dirt = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.bakgrunn.SuspendLayout();
             this.SuspendLayout();
             // 
             // bakgrunn
             // 
             this.bakgrunn.BackgroundImage = global::Hoppespill.Properties.Resources.Bakgrunn;
+            this.bakgrunn.Controls.Add(this.dirt);
             this.bakgrunn.Controls.Add(this.car);
             this.bakgrunn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bakgrunn.Location = new System.Drawing.Point(0, 0);
@@ -51,8 +57,17 @@
             this.car.Name = "car";
             this.car.Size = new System.Drawing.Size(90, 30);
             this.car.TabIndex = 0;
-            this.car.Click += new System.EventHandler(this.car_Click);
-            this.car.Paint += new System.Windows.Forms.PaintEventHandler(this.car_Paint);
+            // 
+            // dirt
+            // 
+            this.dirt.Location = new System.Drawing.Point(514, 230);
+            this.dirt.Name = "dirt";
+            this.dirt.Size = new System.Drawing.Size(35, 30);
+            this.dirt.TabIndex = 1;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.box_Tick);
             // 
             // Form1
             // 
@@ -62,6 +77,7 @@
             this.Controls.Add(this.bakgrunn);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.bakgrunn.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -71,6 +87,8 @@
 
         private System.Windows.Forms.Panel bakgrunn;
         private System.Windows.Forms.Panel car;
+        private Panel dirt;
+        private Timer timer;
     }
 }
 
