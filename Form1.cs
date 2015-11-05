@@ -10,20 +10,21 @@ using System.Windows.Forms;
 
 namespace Hoppespill
 {
-    public partial class Form1 : Form
+    public partial class Bouncy : Form
     {
-        public Form1()
+        public Bouncy()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
-
+        
         int sl = 30; //sleep-variabel     
         int mvDY = 270; //y-value of vehicle in left lane (move down y)  
         int mvUY = 230; //y-value of vehicle in right lane (move up y)
         int ps = 230; //y-value of vehicle (used for jumping) 
-        bool laneU = true; //vehicle is in upper lane = true
+        //bool laneU = true; //vehicle is in upper lane = true
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) //vehicle jumping and lane-shifting
         {
@@ -49,7 +50,7 @@ namespace Hoppespill
                     {
                         this.car.Location = new System.Drawing.Point(50, mvDY);
                         ps = mvDY; 
-                        laneU = false;
+                        //laneU = false;
 
                         break;
                     }
@@ -57,19 +58,33 @@ namespace Hoppespill
                     {
                         this.car.Location = new System.Drawing.Point(50, mvUY);
                         ps = mvUY;
-                        laneU = true;
+                        //laneU = true;
                         break;
                     }
             }
         }
 
-        private void box_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            for (int i = 700; i >= -50; i -= 15) //jumping up
+            for (int x = 514; x >= -50; x -= 2) //moving the box
             {
-                this.dirt.Location = new System.Drawing.Point(i, 230);
+                this.dirt.Location = new System.Drawing.Point(x, 230);
                 
             }
+        }
+
+        private void dirtMov()
+        {
+            
+        }
+
+        private void chkCol()
+        {
+            if (car.Bounds.IntersectsWith(dirt.Bounds))
+            {
+                this.car.Location = new System.Drawing.Point(1, 1);
+            }
+            
         }
     }
 }

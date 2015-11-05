@@ -2,7 +2,7 @@
 
 namespace Hoppespill
 {
-    partial class Form1
+    partial class Bouncy
     {
         /// <summary>
         /// Required designer variable.
@@ -32,8 +32,8 @@ namespace Hoppespill
         {
             this.components = new System.ComponentModel.Container();
             this.bakgrunn = new System.Windows.Forms.Panel();
-            this.car = new System.Windows.Forms.Panel();
             this.dirt = new System.Windows.Forms.Panel();
+            this.car = new System.Windows.Forms.Panel();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.bakgrunn.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,13 @@ namespace Hoppespill
             this.bakgrunn.Size = new System.Drawing.Size(684, 311);
             this.bakgrunn.TabIndex = 0;
             // 
+            // dirt
+            // 
+            this.dirt.Location = new System.Drawing.Point(514, 230);
+            this.dirt.Name = "dirt";
+            this.dirt.Size = new System.Drawing.Size(35, 30);
+            this.dirt.TabIndex = 1;
+            // 
             // car
             // 
             this.car.BackColor = System.Drawing.Color.Transparent;
@@ -58,25 +65,20 @@ namespace Hoppespill
             this.car.Size = new System.Drawing.Size(90, 30);
             this.car.TabIndex = 0;
             // 
-            // dirt
-            // 
-            this.dirt.Location = new System.Drawing.Point(514, 230);
-            this.dirt.Name = "dirt";
-            this.dirt.Size = new System.Drawing.Size(35, 30);
-            this.dirt.TabIndex = 1;
-            // 
             // timer
             // 
-            this.timer.Tick += new System.EventHandler(this.box_Tick);
+            this.timer.Enabled = true;
+            this.timer.Interval = 700;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // Form1
+            // Bouncy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 311);
             this.Controls.Add(this.bakgrunn);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Bouncy";
+            this.Text = "Evasivehicle";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.bakgrunn.ResumeLayout(false);
             this.ResumeLayout(false);
