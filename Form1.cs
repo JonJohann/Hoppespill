@@ -12,79 +12,141 @@ namespace Hoppespill
 {
     public partial class Bouncy : Form
     {
+        private Timer beveg = new Timer(); //made timer for movement of player
+        private Timer obstMove = new Timer(); //made timer for movement of obstacle
+        private Timer obstSpawn = new Timer(); //made timer for spawning of obstacles
+        private List<Panel> obstacles = new List<Panel>(); //a list for all the obstacles
         public Bouncy()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
+            beveg.Interval = 10;
+            obstSpawn.Interval = 2000;
+            obstSpawn.Tick += ObstSpawn_Tick; //adds the tick event for the timer
+            obstSpawn.Start();
+            obstMove.Interval = 10;
+            obstMove.Tick += ObstMove_Tick; //adds the tick event for the timer
+            obstMove.Start();
+            beveg.Tick += beveg_event; //adds the tick event for the timer
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            
         }
-        
-        int sl = 30; //sleep-variabel     
+
+        //variables
         int mvDY = 270; //y-value of vehicle in left lane (move down y)  
         int mvUY = 230; //y-value of vehicle in right lane (move up y)
         int ps = 230; //y-value of vehicle (used for jumping) 
-        //bool laneU = true; //vehicle is in upper lane = true
+        bool jump = false;
+        int jumphgt;
+        bool laneU = true; //vehicle is in upper lane = true
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e) //vehicle jumping and lane-shifting
+        private void ObstSpawn_Tick(object sender, EventArgs e) //Spawning obstacles
+        {
+            addHind();
+        }
+
+        private void ObstMove_Tick(object sender, EventArgs e) //Moving obstacles
+        {
+            for (int i = 0; i < obstacles.Count; i++)
+            {
+                Panel o = obstacles[i];
+                if(o.Right > 0 && o.Left < this.Width)
+                {
+                    o.Left -= 5;
+                }
+                else
+                {
+                    obstacles.Remove(o);
+                }
+            }
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+   
+        
+
+        private void beveg_event(object sender, EventArgs e) //moving the player
+        {
+            if(car1.Top > jumphgt && jump)
+            {
+                car1.Top -= 5;
+            }
+            else if(car1.Top < (laneU ? mvUY : mvDY))
+            {
+                car1.Top += 5;
+                jump = false;
+            }
+            else
+            {
+                beveg.Stop();
+            }
+            
+        }
+
+        private void Bouncy_KeyDown(object sender, KeyEventArgs e) //vehicle jumping and lane-shifting
         {
             switch (e.KeyData)
             {
                 case Keys.Space: //car jumps
                     {
-                        for (int i = ps; i >= ps-90; i -= 15) //jumping up
-                        {
-                            this.car.Location = new System.Drawing.Point(50, i);
-                            System.Threading.Thread.Sleep(sl);
-                        }
 
-                        for (int i = ps-90; i <= ps; i += 15) //gravitational pull
-                        {
-                            this.car.Location = new System.Drawing.Point(50, i);
-                            System.Threading.Thread.Sleep(sl);
-                        }
+                        jump = true;
+                        jumphgt = car1.Top - 60;
+                        beveg.Start();
 
                         break;
                     }
                 case Keys.Down: //moving the car to the bottom lane
                     {
-                        this.car.Location = new System.Drawing.Point(50, mvDY);
+                        car1.Top = mvDY;
                         ps = mvDY; 
-                        //laneU = false;
+                        laneU = false;
 
                         break;
                     }
                 case Keys.Up: //moving the car to the upper lane
                     {
-                        this.car.Location = new System.Drawing.Point(50, mvUY);
+                        car1.Top = mvUY;
                         ps = mvUY;
-                        //laneU = true;
+                        laneU = true;
                         break;
                     }
             }
-        }
+        } 
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void addHind()
         {
-            for (int x = 514; x >= -50; x -= 2) //moving the box
-            {
-                this.dirt.Location = new System.Drawing.Point(x, 230);
-                
-            }
-        }
+            Panel hind = new Panel();
+            hind.Location = new System.Drawing.Point(514, 230);
+            hind.Name = "hind";
+            hind.Size = new System.Drawing.Size(35, 30);
+            hind.TabIndex = 1;
+            obstacles.Add(hind);
+            this.Controls.Add(hind);
+            hind.BringToFront();
 
-        private void dirtMov()
-        {
-            
         }
 
         private void chkCol()
         {
-            if (car.Bounds.IntersectsWith(dirt.Bounds))
+            foreach (Panel p in obstacles)
             {
-                this.car.Location = new System.Drawing.Point(1, 1);
+                if (car1.Right == p.Left)
+                {
+                    label1.Text = "OV";
+                }
             }
-            
+
+
         }
     }
 }
