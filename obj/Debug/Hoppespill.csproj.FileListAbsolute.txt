@@ -7,3 +7,4 @@ c:\users\jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\ob
 c:\users\jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.exe
 c:\users\jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.pdb
 C:\Users\Jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.Bouncy.resources
+C:\Users\Jonathan\Documents\Visual Studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.login.resources

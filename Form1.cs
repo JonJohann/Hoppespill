@@ -32,6 +32,7 @@ namespace Hoppespill
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             
         }
+        
 
         //variables
         int mvDY = 270; //y-value of vehicle in left lane (move down y)  
@@ -60,6 +61,7 @@ namespace Hoppespill
                     obstacles.Remove(o);
                 }
             }
+            chkCol();
         }
 
         protected override CreateParams CreateParams
@@ -133,6 +135,7 @@ namespace Hoppespill
             obstacles.Add(hind);
             this.Controls.Add(hind);
             hind.BringToFront();
+            
 
         }
 
@@ -140,7 +143,7 @@ namespace Hoppespill
         {
             foreach (Panel p in obstacles)
             {
-                if (car1.Right == p.Left)
+                if (car1.Bounds.IntersectsWith(p.Bounds))
                 {
                     label1.Text = "OV";
                 }
@@ -148,5 +151,7 @@ namespace Hoppespill
 
 
         }
+
+        
     }
 }

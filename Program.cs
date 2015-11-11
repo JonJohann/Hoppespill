@@ -16,7 +16,9 @@ namespace Hoppespill
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Bouncy());
+            Application.Run(new login());
+            
+            
         }
     }
 }
