@@ -13,8 +13,8 @@ namespace Hoppespill
     public partial class Bouncy : Form
     {
         private Timer beveg = new Timer(); //made timer for movement of player
-        private Timer obstMove = new Timer(); //made timer for movement of obstacle
-        private Timer obstSpawn = new Timer(); //made timer for spawning of obstacles
+        public Timer obstMove = new Timer(); //made timer for movement of obstacle
+        public Timer obstSpawn = new Timer(); //made timer for spawning of obstacles
         private List<Panel> obstacles = new List<Panel>(); //a list for all the obstacles
         public Bouncy()
         {
@@ -145,11 +145,23 @@ namespace Hoppespill
             {
                 if (car1.Bounds.IntersectsWith(p.Bounds))
                 {
-                    label1.Text = "OV";
+
+                    life.Text = Convert.ToString(Convert.ToInt16(life.Text) - 1);
+
                 }
             }
 
 
+        }
+
+        private void lost()
+        {
+            if (Convert.ToInt16(life.Text) >= 0)
+            {
+                this.obstMove.Enabled = false;
+                this.obstSpawn.Enabled = false;
+                rudrevyen.Text = "GAME OVER";
+            }
         }
 
         

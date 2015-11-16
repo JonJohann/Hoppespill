@@ -31,8 +31,7 @@ namespace Hoppespill
 
             new Bouncy().Show();
 
-
-
+            user = username.Text; 
 
         }
     }
