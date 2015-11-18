@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Hoppespill
 {
@@ -34,10 +35,9 @@ namespace Hoppespill
             beveg.Tick += beveg_event; //adds the tick event for the timer
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             user2.Text = login.user;
-
+            button1.Enabled = false;
+            
         }
-        
-
         //variables
         int mvDY = 270; //y-value of vehicle in left lane (move down y)  
         int mvUY = 230; //y-value of vehicle in right lane (move up y)
@@ -46,8 +46,10 @@ namespace Hoppespill
         int jumphgt;
         bool laneU = true; //vehicle is in upper lane = true
         int t = 0; //used for point-adding
+        string fileName = @".\brukere.txt"; //@"C:\Temp\brukere.txt";
         
-        
+
+
 
 
 
@@ -185,32 +187,43 @@ namespace Hoppespill
                         this.obstSpawn.Start();
                         rudrevyen.Text = "";
                         t = 0;
-                               
-                            
-                            
+                        highscoreAdd();
+                        obstacles.Clear();
+                        for(int i = 0; i < this.Controls.Count; i++)
+                        {
+                            if(this.Controls[i] is Panel && this.Controls[i].Name != "bakgrunn" && this.Controls[i].Name != "car1" )
+                            {
+                                this.Controls.Remove(this.Controls[i]);
+                            }
+                            {
+                                
+                            }
+                        }
+                        label1.Visible = false;
+                        button1.Enabled = false;
+                        button1.Visible = false;
+                        break;
                         
-                        break; 
                         
                     }
             }
-        } 
-
-       
-
+        }
         private void chkCol() //checking if the game is lost
         {
-            for(int i = 0; i < obstacles.Count; i++) 
+            for (int i = 0; i < obstacles.Count; i++)
             {
-                if (collides(car1,obstacles[i]))
+                if (collides(car1, obstacles[i]))
                 {
                     this.obstMove.Stop();
                     this.obstSpawn.Stop();
                     rudrevyen.Text = "GAME OVER";
                     this.Controls.Remove(obstacles[i]);
                     this.obstacles.Remove(obstacles[i]);
-                   
-                    break;
+                    button1.Visible = true;
+                    button1.Enabled = true;
                     
+                    break;
+
                 }
             }
 
@@ -235,9 +248,47 @@ namespace Hoppespill
                 return false;
             }
         }
+        public void highscoreAdd()
+        {
+            
+            if(!File.Exists(fileName))
+            {
+                File.Create(fileName);
+            }
 
+            FileInfo fi = new FileInfo(fileName);
+            StreamWriter writer = fi.AppendText();
+            writer.WriteLine(user2.Text + ":" + life.Text);
+            writer.Close();
+            writer.Dispose();
+
+            
+
+
+        }
         
 
+        public void button1_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(fileName))
+            {
+                label1.Text = "";
+                StreamReader reader = new StreamReader(fileName);
+                string l;
+                while((l = reader.ReadLine()) != null)
+                {
+                    label1.Text += l + Environment.NewLine;
+                }
+                reader.Close();
+                reader.Dispose();
+                label1.Visible = true;
+                
+                
 
+            }
+
+
+
+        }
     }
 }

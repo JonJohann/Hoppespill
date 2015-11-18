@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 72);
+            this.ClientSize = new System.Drawing.Size(201, 233);
             this.Controls.Add(this.hiscore);
             this.Controls.Add(this.play);
             this.Controls.Add(this.username);

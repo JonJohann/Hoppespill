@@ -30,19 +30,25 @@ namespace Hoppespill
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bouncy));
             this.bakgrunn = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.user2 = new System.Windows.Forms.Label();
             this.pla = new System.Windows.Forms.Label();
             this.points = new System.Windows.Forms.Label();
             this.rudrevyen = new System.Windows.Forms.Label();
             this.life = new System.Windows.Forms.Label();
             this.car1 = new System.Windows.Forms.Panel();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.bakgrunn.SuspendLayout();
             this.SuspendLayout();
             // 
             // bakgrunn
             // 
             this.bakgrunn.BackgroundImage = global::Hoppespill.Properties.Resources.Bakgrunn;
+            this.bakgrunn.Controls.Add(this.label1);
+            this.bakgrunn.Controls.Add(this.button1);
             this.bakgrunn.Controls.Add(this.user2);
             this.bakgrunn.Controls.Add(this.pla);
             this.bakgrunn.Controls.Add(this.points);
@@ -52,8 +58,20 @@ namespace Hoppespill
             this.bakgrunn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bakgrunn.Location = new System.Drawing.Point(0, 0);
             this.bakgrunn.Name = "bakgrunn";
-            this.bakgrunn.Size = new System.Drawing.Size(684, 311);
+            this.bakgrunn.Size = new System.Drawing.Size(684, 302);
             this.bakgrunn.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(24, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 73);
+            this.button1.TabIndex = 6;
+            this.button1.TabStop = false;
+            this.button1.Text = "HIGHSCORE";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // user2
             // 
@@ -121,11 +139,31 @@ namespace Hoppespill
             this.car1.Size = new System.Drawing.Size(90, 30);
             this.car1.TabIndex = 0;
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(185, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(236, 269);
+            this.label1.TabIndex = 7;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
+            // 
             // Bouncy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 311);
+            this.ClientSize = new System.Drawing.Size(684, 302);
             this.Controls.Add(this.bakgrunn);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
@@ -147,6 +185,9 @@ namespace Hoppespill
         private Label user2;
         private Label pla;
         private Label points;
+        private Button button1;
+        private Label label1;
+        private PrintPreviewDialog printPreviewDialog1;
     }
 }
 

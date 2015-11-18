@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO; 
 
 namespace Hoppespill
 {
@@ -29,7 +30,7 @@ namespace Hoppespill
 
         public void play_Click(object sender, EventArgs e)
         {
-            if (user == "USERNAME")
+            if (username.Text == "USERNAME")
             {
                 MessageBox.Show("YOU NEED A USERNAME");
 
@@ -41,5 +42,7 @@ namespace Hoppespill
             }
 
         }
+
+        
     }
 }
