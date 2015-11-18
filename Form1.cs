@@ -48,6 +48,7 @@ namespace Hoppespill
         int t = 0; //used for point-adding
         string fileName = @".\brukere.txt"; //@"C:\Temp\brukere.txt";
         
+        
 
 
 
@@ -112,6 +113,7 @@ namespace Hoppespill
             
             
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -187,7 +189,7 @@ namespace Hoppespill
                         this.obstSpawn.Start();
                         rudrevyen.Text = "";
                         t = 0;
-                        highscoreAdd();
+                        
                         obstacles.Clear();
                         for(int i = 0; i < this.Controls.Count; i++)
                         {
@@ -208,6 +210,7 @@ namespace Hoppespill
                     }
             }
         }
+
         private void chkCol() //checking if the game is lost
         {
             for (int i = 0; i < obstacles.Count; i++)
@@ -221,11 +224,12 @@ namespace Hoppespill
                     this.obstacles.Remove(obstacles[i]);
                     button1.Visible = true;
                     button1.Enabled = true;
-                    
+                    highscoreAdd();
                     break;
 
                 }
             }
+            
 
 
         }
@@ -247,7 +251,9 @@ namespace Hoppespill
             {
                 return false;
             }
+            
         }
+
         public void highscoreAdd()
         {
             
@@ -261,34 +267,39 @@ namespace Hoppespill
             writer.WriteLine(user2.Text + ":" + life.Text);
             writer.Close();
             writer.Dispose();
-
-            
-
-
         }
         
 
         public void button1_Click(object sender, EventArgs e)
         {
-            if (File.Exists(fileName))
+            if (!label1.Visible)
             {
-                label1.Text = "";
-                StreamReader reader = new StreamReader(fileName);
-                string l;
-                while((l = reader.ReadLine()) != null)
+                if (File.Exists(fileName))
                 {
-                    label1.Text += l + Environment.NewLine;
-                }
-                reader.Close();
-                reader.Dispose();
-                label1.Visible = true;
-                
-                
+                    label1.Text = "";
+                    StreamReader reader = new StreamReader(fileName);
+                    string l;
+                    while ((l = reader.ReadLine()) != null)
+                    {
+                        label1.Text += l + Environment.NewLine;
+                    }
+                    reader.Close();
+                    reader.Dispose();
+                    label1.Visible = true;
 
+
+
+                }
+            }
+            else
+            {
+                label1.Visible = false;
             }
 
 
 
         }
+
+        
     }
 }

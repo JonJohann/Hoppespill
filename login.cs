@@ -19,6 +19,7 @@ namespace Hoppespill
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+           
         }
 
         public string user = "";

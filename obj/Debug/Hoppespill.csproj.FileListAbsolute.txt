@@ -8,3 +8,13 @@ c:\users\jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\ob
 c:\users\jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.pdb
 C:\Users\Jonathan\documents\visual studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.Bouncy.resources
 C:\Users\Jonathan\Documents\Visual Studio 2015\Projects\Hoppespill\Hoppespill\obj\Debug\Hoppespill.login.resources
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\bin\Debug\Hoppespill.exe.config
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.exe
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.pdb
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\bin\Debug\Hoppespill.exe
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\bin\Debug\Hoppespill.pdb
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.Bouncy.resources
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.login.resources
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.Properties.Resources.resources
+C:\Users\Jonathan\Documents\GitHub\Hoppespill\obj\Debug\Hoppespill.csproj.GenerateResource.Cache

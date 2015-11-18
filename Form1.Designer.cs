@@ -31,92 +31,37 @@ namespace Hoppespill
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bouncy));
-            this.bakgrunn = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.user2 = new System.Windows.Forms.Label();
-            this.pla = new System.Windows.Forms.Label();
-            this.points = new System.Windows.Forms.Label();
-            this.rudrevyen = new System.Windows.Forms.Label();
-            this.life = new System.Windows.Forms.Label();
-            this.car1 = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.car1 = new System.Windows.Forms.Panel();
+            this.life = new System.Windows.Forms.Label();
+            this.rudrevyen = new System.Windows.Forms.Label();
+            this.points = new System.Windows.Forms.Label();
+            this.pla = new System.Windows.Forms.Label();
+            this.user2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.bakgrunn = new System.Windows.Forms.Panel();
             this.bakgrunn.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bakgrunn
+            // printPreviewDialog1
             // 
-            this.bakgrunn.BackgroundImage = global::Hoppespill.Properties.Resources.Bakgrunn;
-            this.bakgrunn.Controls.Add(this.label1);
-            this.bakgrunn.Controls.Add(this.button1);
-            this.bakgrunn.Controls.Add(this.user2);
-            this.bakgrunn.Controls.Add(this.pla);
-            this.bakgrunn.Controls.Add(this.points);
-            this.bakgrunn.Controls.Add(this.rudrevyen);
-            this.bakgrunn.Controls.Add(this.life);
-            this.bakgrunn.Controls.Add(this.car1);
-            this.bakgrunn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bakgrunn.Location = new System.Drawing.Point(0, 0);
-            this.bakgrunn.Name = "bakgrunn";
-            this.bakgrunn.Size = new System.Drawing.Size(684, 302);
-            this.bakgrunn.TabIndex = 0;
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
-            // button1
+            // car1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 73);
-            this.button1.TabIndex = 6;
-            this.button1.TabStop = false;
-            this.button1.Text = "HIGHSCORE";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // user2
-            // 
-            this.user2.AutoSize = true;
-            this.user2.BackColor = System.Drawing.Color.Transparent;
-            this.user2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user2.ForeColor = System.Drawing.Color.White;
-            this.user2.Location = new System.Drawing.Point(471, 0);
-            this.user2.Name = "user2";
-            this.user2.Size = new System.Drawing.Size(0, 33);
-            this.user2.TabIndex = 5;
-            // 
-            // pla
-            // 
-            this.pla.AutoSize = true;
-            this.pla.BackColor = System.Drawing.Color.Transparent;
-            this.pla.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pla.ForeColor = System.Drawing.Color.White;
-            this.pla.Location = new System.Drawing.Point(339, 0);
-            this.pla.Name = "pla";
-            this.pla.Size = new System.Drawing.Size(144, 33);
-            this.pla.TabIndex = 4;
-            this.pla.Text = "PLAYER:";
-            // 
-            // points
-            // 
-            this.points.AutoSize = true;
-            this.points.BackColor = System.Drawing.Color.Transparent;
-            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.points.ForeColor = System.Drawing.Color.White;
-            this.points.Location = new System.Drawing.Point(3, 4);
-            this.points.Name = "points";
-            this.points.Size = new System.Drawing.Size(138, 33);
-            this.points.TabIndex = 3;
-            this.points.Text = "POINTS:";
-            // 
-            // rudrevyen
-            // 
-            this.rudrevyen.AutoSize = true;
-            this.rudrevyen.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.rudrevyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rudrevyen.Location = new System.Drawing.Point(251, 92);
-            this.rudrevyen.Name = "rudrevyen";
-            this.rudrevyen.Size = new System.Drawing.Size(0, 31);
-            this.rudrevyen.TabIndex = 2;
+            this.car1.BackColor = System.Drawing.Color.Transparent;
+            this.car1.BackgroundImage = global::Hoppespill.Properties.Resources.Bil;
+            this.car1.Location = new System.Drawing.Point(50, 230);
+            this.car1.Name = "car1";
+            this.car1.Size = new System.Drawing.Size(90, 30);
+            this.car1.TabIndex = 0;
             // 
             // life
             // 
@@ -130,34 +75,88 @@ namespace Hoppespill
             this.life.TabIndex = 1;
             this.life.Text = "0";
             // 
-            // car1
+            // rudrevyen
             // 
-            this.car1.BackColor = System.Drawing.Color.Transparent;
-            this.car1.BackgroundImage = global::Hoppespill.Properties.Resources.Bil;
-            this.car1.Location = new System.Drawing.Point(50, 230);
-            this.car1.Name = "car1";
-            this.car1.Size = new System.Drawing.Size(90, 30);
-            this.car1.TabIndex = 0;
+            this.rudrevyen.AutoSize = true;
+            this.rudrevyen.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.rudrevyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rudrevyen.Location = new System.Drawing.Point((this.Width / 2 - rudrevyen.Width/2 ), 92);
+            this.rudrevyen.Name = "rudrevyen";
+            this.rudrevyen.Size = new System.Drawing.Size(0, 31);
+            this.rudrevyen.TabIndex = 2;
             // 
-            // printPreviewDialog1
+            // points
             // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
+            this.points.AutoSize = true;
+            this.points.BackColor = System.Drawing.Color.Transparent;
+            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.points.ForeColor = System.Drawing.Color.White;
+            this.points.Location = new System.Drawing.Point(3, 4);
+            this.points.Name = "points";
+            this.points.Size = new System.Drawing.Size(138, 33);
+            this.points.TabIndex = 3;
+            this.points.Text = "POINTS:";
+            // 
+            // pla
+            // 
+            this.pla.AutoSize = true;
+            this.pla.BackColor = System.Drawing.Color.Transparent;
+            this.pla.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pla.ForeColor = System.Drawing.Color.White;
+            this.pla.Location = new System.Drawing.Point(412, 4);
+            this.pla.Name = "pla";
+            this.pla.Size = new System.Drawing.Size(144, 33);
+            this.pla.TabIndex = 4;
+            this.pla.Text = "PLAYER:";
+            // 
+            // user2
+            // 
+            this.user2.AutoSize = true;
+            this.user2.BackColor = System.Drawing.Color.Transparent;
+            this.user2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user2.ForeColor = System.Drawing.Color.White;
+            this.user2.Location = new System.Drawing.Point(562, 4);
+            this.user2.Name = "user2";
+            this.user2.Size = new System.Drawing.Size(0, 33);
+            this.user2.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point((this.Width / 2 - button1.Width / 2), 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 37);
+            this.button1.TabIndex = 6;
+            this.button1.TabStop = false;
+            this.button1.Text = "HIGHSCORE";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(185, 33);
+            this.label1.Location = new System.Drawing.Point((this.Width / 2 - label1.Width / 2), 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 269);
             this.label1.TabIndex = 7;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Visible = false;
+            // 
+            // bakgrunn
+            // 
+            this.bakgrunn.BackgroundImage = global::Hoppespill.Properties.Resources.output_sHKwcW;
+            this.bakgrunn.Controls.Add(this.label1);
+            this.bakgrunn.Controls.Add(this.button1);
+            this.bakgrunn.Controls.Add(this.user2);
+            this.bakgrunn.Controls.Add(this.pla);
+            this.bakgrunn.Controls.Add(this.points);
+            this.bakgrunn.Controls.Add(this.rudrevyen);
+            this.bakgrunn.Controls.Add(this.life);
+            this.bakgrunn.Controls.Add(this.car1);
+            this.bakgrunn.Location = new System.Drawing.Point(0, 0);
+            this.bakgrunn.Name = "bakgrunn";
+            this.bakgrunn.Size = new System.Drawing.Size(684, 302);
+            this.bakgrunn.TabIndex = 0;
             // 
             // Bouncy
             // 
@@ -177,17 +176,16 @@ namespace Hoppespill
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel bakgrunn;
-        private System.Windows.Forms.Panel car1;
+        private PrintPreviewDialog printPreviewDialog1;
+        private Panel car1;
         private Label life;
         private Label rudrevyen;
-        private Label user2;
-        private Label pla;
         private Label points;
+        private Label pla;
+        private Label user2;
         private Button button1;
-        private Label label1;
-        private PrintPreviewDialog printPreviewDialog1;
+        public Label label1;
+        private Panel bakgrunn;
     }
 }
 
