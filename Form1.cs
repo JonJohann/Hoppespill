@@ -17,12 +17,15 @@ namespace Hoppespill
         public Timer obstSpawn = new Timer(); //made timer for spawning of obstacles
         private List<Panel> obstacles = new List<Panel>(); //a list for all the obstacles
         public Bouncy()
+        
         {
             InitializeComponent();
+            login login = new login();
+            login.ShowDialog();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             beveg.Interval = 10;
-            obstSpawn.Interval = 2000;
+            obstSpawn.Interval = new Random().Next(1500,3000);
             obstSpawn.Tick += ObstSpawn_Tick; //adds the tick event for the timer
             obstSpawn.Start();
             obstMove.Interval = 10;
@@ -30,7 +33,8 @@ namespace Hoppespill
             obstMove.Start();
             beveg.Tick += beveg_event; //adds the tick event for the timer
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            
+            user2.Text = login.user;
+
         }
         
 
@@ -41,10 +45,50 @@ namespace Hoppespill
         bool jump = false;
         int jumphgt;
         bool laneU = true; //vehicle is in upper lane = true
+        int t = 0; //used for point-adding
+        
+        
 
-        private void ObstSpawn_Tick(object sender, EventArgs e) //Spawning obstacles
+
+
+        public void ObstSpawn_Tick(object sender, EventArgs e) //Spawning obstacles
         {
-            addHind();
+          
+            obstSpawn.Interval = new Random().Next(800, 1500);
+            int uod = new Random().Next(0, 100);
+            
+            if (uod > 60)
+            {
+                addHind(mvUY);
+            }
+            else if (uod <40 )
+            {
+                addHind(mvDY);
+            }
+            else
+            {
+                addHind(mvDY);
+                addHind(mvUY);
+            }
+            
+
+
+
+        }
+
+        public void addHind(int lanePosition) //adding obstacles
+        {
+            Panel hind = new Panel();
+            hind.Location = new System.Drawing.Point(this.Width-1, lanePosition);
+            hind.Name = "hind";
+            hind.Size = new System.Drawing.Size(35, 30);
+            hind.TabIndex = 1;
+            obstacles.Add(hind);
+            this.Controls.Add(hind);
+            hind.BringToFront();
+            car1.BringToFront();
+
+
         }
 
         private void ObstMove_Tick(object sender, EventArgs e) //Moving obstacles
@@ -59,11 +103,13 @@ namespace Hoppespill
                 else
                 {
                     obstacles.Remove(o);
+                    life.Text = Convert.ToString(t++); //adds point
                 }
             }
             chkCol();
+            
+            
         }
-
         protected override CreateParams CreateParams
         {
             get
@@ -74,17 +120,18 @@ namespace Hoppespill
             }
         }
    
+
         
 
         private void beveg_event(object sender, EventArgs e) //moving the player
         {
             if(car1.Top > jumphgt && jump)
             {
-                car1.Top -= 5;
+                car1.Top -= 8;
             }
             else if(car1.Top < (laneU ? mvUY : mvDY))
             {
-                car1.Top += 5;
+                car1.Top += 8;
                 jump = false;
             }
             else
@@ -101,69 +148,96 @@ namespace Hoppespill
                 case Keys.Space: //car jumps
                     {
 
-                        jump = true;
-                        jumphgt = car1.Top - 60;
-                        beveg.Start();
+                        if (car1.Top == mvDY || car1.Top == mvUY)
+                        {
+                            jump = true;
+                            jumphgt = car1.Top - 160;
+                            beveg.Start();
+                        }
+                        
 
                         break;
                     }
                 case Keys.Down: //moving the car to the bottom lane
                     {
-                        car1.Top = mvDY;
-                        ps = mvDY; 
-                        laneU = false;
+                        if (car1.Location.Y == mvUY)
+                        {
+                            car1.Top = mvDY;
+                            ps = mvDY;
+                            laneU = false;
+                        }
 
                         break;
                     }
                 case Keys.Up: //moving the car to the upper lane
                     {
-                        car1.Top = mvUY;
-                        ps = mvUY;
-                        laneU = true;
+                        if (car1.Location.Y == mvDY)
+                        {
+                            car1.Top = mvUY;
+                            ps = mvUY;
+                            laneU = true;
+                        }
                         break;
+                    }
+                case Keys.R:
+                    {       
+                        this.obstMove.Start();
+                        this.obstSpawn.Start();
+                        rudrevyen.Text = "";
+                        t = 0;
+                               
+                            
+                            
+                        
+                        break; 
+                        
                     }
             }
         } 
 
-        private void addHind()
-        {
-            Panel hind = new Panel();
-            hind.Location = new System.Drawing.Point(514, 230);
-            hind.Name = "hind";
-            hind.Size = new System.Drawing.Size(35, 30);
-            hind.TabIndex = 1;
-            obstacles.Add(hind);
-            this.Controls.Add(hind);
-            hind.BringToFront();
-            
+       
 
-        }
-
-        private void chkCol()
+        private void chkCol() //checking if the game is lost
         {
-            foreach (Panel p in obstacles)
+            for(int i = 0; i < obstacles.Count; i++) 
             {
-                if (car1.Bounds.IntersectsWith(p.Bounds))
+                if (collides(car1,obstacles[i]))
                 {
-
-                    life.Text = Convert.ToString(Convert.ToInt16(life.Text) - 1);
-
+                    this.obstMove.Stop();
+                    this.obstSpawn.Stop();
+                    rudrevyen.Text = "GAME OVER";
+                    this.Controls.Remove(obstacles[i]);
+                    this.obstacles.Remove(obstacles[i]);
+                   
+                    break;
+                    
                 }
             }
 
 
         }
-
-        private void lost()
+        private bool collides(Panel p1, Panel p2)
         {
-            if (Convert.ToInt16(life.Text) >= 0)
+            if (!laneU && p2.Location.Y == mvUY)
+            { return false; }
+            else if (!laneU && p2.Location.Y != mvUY && p1.Right >= p2.Left && p1.Left <= p2.Right && p1.Bottom >= p2.Top && p1.Top <= p2.Bottom)
             {
-                this.obstMove.Enabled = false;
-                this.obstSpawn.Enabled = false;
-                rudrevyen.Text = "GAME OVER";
+                return true;
+            }
+            else if (laneU && p2.Location.Y == mvUY && p1.Right >= p2.Left && p1.Left <= p2.Right && p1.Bottom >= p2.Top && p1.Top <= p2.Bottom)
+            {
+                return true;
+            }
+
+            else
+
+            {
+                return false;
             }
         }
 
         
+
+
     }
 }

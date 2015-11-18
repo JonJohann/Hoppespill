@@ -36,7 +36,7 @@
             // username
             // 
             this.username.ForeColor = System.Drawing.Color.Gray;
-            this.username.Location = new System.Drawing.Point(23, 43);
+            this.username.Location = new System.Drawing.Point(12, 12);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(100, 20);
             this.username.TabIndex = 0;
@@ -45,19 +45,19 @@
             // 
             // play
             // 
-            this.play.Location = new System.Drawing.Point(130, 39);
+            this.play.Location = new System.Drawing.Point(118, 12);
             this.play.Name = "play";
-            this.play.Size = new System.Drawing.Size(75, 23);
+            this.play.Size = new System.Drawing.Size(75, 20);
             this.play.TabIndex = 1;
-            this.play.Text = "play";
+            this.play.Text = "PLAY";
             this.play.UseVisualStyleBackColor = true;
             this.play.Click += new System.EventHandler(this.play_Click);
             // 
             // hiscore
             // 
-            this.hiscore.Location = new System.Drawing.Point(23, 69);
+            this.hiscore.Location = new System.Drawing.Point(12, 38);
             this.hiscore.Name = "hiscore";
-            this.hiscore.Size = new System.Drawing.Size(182, 23);
+            this.hiscore.Size = new System.Drawing.Size(181, 23);
             this.hiscore.TabIndex = 2;
             this.hiscore.Text = "HIGH SCORE";
             this.hiscore.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(201, 72);
             this.Controls.Add(this.hiscore);
             this.Controls.Add(this.play);
             this.Controls.Add(this.username);

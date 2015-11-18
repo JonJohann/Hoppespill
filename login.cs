@@ -15,23 +15,30 @@ namespace Hoppespill
         public login()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
-        string user = "";
+        public string user = "";
 
         private void username_TextChanged(object sender, EventArgs e)
         {
             this.username.ForeColor = System.Drawing.Color.Black;
         }
 
-        private void play_Click(object sender, EventArgs e)
+        public void play_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
+            if (user == "USERNAME")
+            {
+                MessageBox.Show("YOU NEED A USERNAME");
 
-            new Bouncy().Show();
-
-            user = username.Text; 
+            }
+            else
+            {
+                this.Close();
+                user = username.Text;
+            }
 
         }
     }
