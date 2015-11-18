@@ -80,7 +80,7 @@ namespace Hoppespill
             this.rudrevyen.AutoSize = true;
             this.rudrevyen.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.rudrevyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rudrevyen.Location = new System.Drawing.Point((this.Width / 2 - rudrevyen.Width/2 ), 92);
+            this.rudrevyen.Location = new System.Drawing.Point(227, 129);
             this.rudrevyen.Name = "rudrevyen";
             this.rudrevyen.Size = new System.Drawing.Size(0, 31);
             this.rudrevyen.TabIndex = 2;
@@ -122,7 +122,7 @@ namespace Hoppespill
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point((this.Width / 2 - button1.Width / 2), 0);
+            this.button1.Location = new System.Drawing.Point(233, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 37);
             this.button1.TabIndex = 6;
@@ -135,7 +135,7 @@ namespace Hoppespill
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point((this.Width / 2 - label1.Width / 2), 33);
+            this.label1.Location = new System.Drawing.Point(185, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 269);
             this.label1.TabIndex = 7;
